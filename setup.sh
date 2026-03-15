@@ -44,9 +44,20 @@ git clone https://github.com/vgoklani/semianalysis_hackathon_2026.git
 
 srun --gpus=1 --pty  bash
 
-tmux source-file /mnt/sharefs/user62/semianalysis_hackathon_2026/.tmux.conf
+# tmux source-file /mnt/sharefs/user62/semianalysis_hackathon_2026/.tmux.conf
+
+ln -sf /mnt/sharefs/user62/semianalysis_hackathon_2026/.tmux.conf ~/.tmux.conf
+
+tmux
 
 srun --gpus=1 --container-image=nvcr.io/nvidia/pytorch:26.02-py3 --pty bash
+
+
+srun --gpus=1 \
+     --container-image=nvcr.io/nvidia/pytorch:26.02-py3 \
+     --container-mounts=/mnt/sharefs/user62:/mnt/sharefs/user62 \
+     --pty bash
+
 
 #####################
 # claude
@@ -66,3 +77,5 @@ echo 'export ANTHROPIC_API_KEY=sk-ant-...' >> ~/.bashrc
 
 # Run it
 claude
+
+ssh user62@44.236.167.7
