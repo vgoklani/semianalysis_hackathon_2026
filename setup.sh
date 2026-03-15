@@ -42,3 +42,27 @@ docker run --rm --gpus all nvidia/cuda:12.6.0-base-ubuntu24.04 nvidia-smi
 
 git clone https://github.com/vgoklani/semianalysis_hackathon_2026.git
 
+srun --gpus=1 --pty  bash
+
+tmux source-file /mnt/sharefs/user62/semianalysis_hackathon_2026/.tmux.conf
+
+srun --gpus=1 --container-image=nvcr.io/nvidia/pytorch:26.02-py3 --pty bash
+
+#####################
+# claude
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+source ~/.bashrc
+
+# Install Node.js
+nvm install 22
+
+# Install Claude Code
+npm install -g @anthropic-ai/claude-code
+
+# Set your API key
+export ANTHROPIC_API_KEY=sk-ant-...
+echo 'export ANTHROPIC_API_KEY=sk-ant-...' >> ~/.bashrc
+
+# Run it
+claude
