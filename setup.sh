@@ -37,3 +37,8 @@ docker run --rm hello-world
 
 # Test GPU access in Docker
 docker run --rm --gpus all nvidia/cuda:12.6.0-base-ubuntu24.04 nvidia-smi
+
+#####################
+
+git clone https://github.com/vgoklani/semianalysis_hackathon_2026.git
+
